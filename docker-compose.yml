@@ -27,10 +27,6 @@ services:
           - TZ=Asia/Shanghai # 设置时区
       ports:
           - '27016:27017' # 宿主机可以用 127.0.0.1:27016 即可连接容器中的数据库
-      command: 
-          - |
-              mongo
-              use admin
-              db.createUser({ user: 'play', pwd: 'play', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] })
+      
 
       
