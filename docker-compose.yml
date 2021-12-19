@@ -15,4 +15,17 @@ services:
       -6378:6379
     environment:
       - TZ=Asia/Shanghai
+  moderate-mongo:
+        image: mongo # 引用官网 mongo 镜像
+        container_name: moderate-mongo
+        restart: always
+        volumes:
+            - '.docker-volumes/mongo/data:/data/db' # 数据持久化
+        environment:
+            - MONGO_INITDB_DATABASE=play
+            # - MONGO_INITDB_ROOT_USERNAME=root
+            # - MONGO_INITDB_ROOT_PASSWORD=123456
+            - TZ=Asia/Shanghai # 设置时区
+        ports:
+            - '27016:27017' # 宿主机可以用 127.0.0.1:27016 即可连接容器中的数据库
       
