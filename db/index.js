@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const db = 'mongodb://play:play@49.233.107.254:27017/?authSource=admin' //mongoose 地址
+const { mongodbConf } = require('../config/index')
+const {dbName,host,port} = mongodbConf;
+const db = `mongodb://play:play@${host}:${port}/?authSource=admin` //mongoose 地址
 mongoose.connect(db,{
     useNewUrlParser:true,
-    dbName:"play"
+    dbName:dbName
 })
 //链接mongoose
  
