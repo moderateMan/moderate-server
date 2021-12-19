@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { mongodbConf } = require('../config/index')
 const {dbName,host,port} = mongodbConf;
-const db = `mongodb://play:play@${host}:${port}/?authSource=admin` //mongoose 地址
+const db = `mongodb://admin:123456@${host}:${port}/?authSource=admin` //mongoose 地址
 mongoose.connect(db,{
     useNewUrlParser:true,
     dbName:dbName
