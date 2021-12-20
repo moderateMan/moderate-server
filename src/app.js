@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const koaSession = require("koa-generic-session")
+const koaJwt = require("./middlewares/jwt")
 require('./db/index')
 
 const index = require('./routes/index')
@@ -26,6 +27,21 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+// 中间件对token进行验证
+app.use(async (ctx, next) => {
+  return next().catch((err) => {
+    if (err.status === 401) {
+      ctx.status = 401;
+      ctx.body = {
+        code: 401,
+        msg: err.message
+      }
+    } else {
+      throw err;
+    }
+  })
+});
+
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
@@ -40,6 +56,8 @@ app.use(koaSession({
   httpOnly:true,
   maxAge:24* 60 * 60 * 10000
 }))
+
+app.use(koaJwt)
 
 // routes
 app.use(index.routes(), index.allowedMethods())

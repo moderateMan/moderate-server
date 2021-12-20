@@ -1,8 +1,3 @@
-/**
- * @description 常量配置
- * @author 双越
- */
-
 module.exports = {
     // 密码加密 秘钥
     PASSWORD_SECRET: '123',

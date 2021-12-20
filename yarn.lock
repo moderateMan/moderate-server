@@ -62,6 +62,14 @@ acorn@^4.0.4, acorn@~4.0.2:
   resolved "https://registry.npmmirror.com/acorn/download/acorn-4.0.13.tgz?cache=0&sync_timestamp=1637225522161&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Facorn%2Fdownload%2Facorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
   integrity sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c=
 
+aggregate-error@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.npmmirror.com/aggregate-error/download/aggregate-error-3.1.0.tgz#92670ff50f5359bdb7a3e0d40d0ec30c5737687a"
+  integrity sha1-kmcP9Q9TWb23o+DUDQ7DDFc3aHo=
+  dependencies:
+    clean-stack "^2.0.0"
+    indent-string "^4.0.0"
+
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "https://registry.npmmirror.com/align-text/download/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -250,6 +258,11 @@ bson@^4.2.2, bson@^4.6.0:
   dependencies:
     buffer "^5.6.0"
 
+buffer-equal-constant-time@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/buffer-equal-constant-time/download/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
+  integrity sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk=
+
 buffer@^5.6.0:
   version "5.7.1"
   resolved "https://registry.npmjs.org/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
@@ -373,6 +386,11 @@ clean-css@^4.1.11:
   integrity sha1-czv0brpOYHxokepXwkqYk1aDEXg=
   dependencies:
     source-map "~0.6.0"
+
+clean-stack@^2.0.0:
+  version "2.2.0"
+  resolved "https://registry.npmmirror.com/clean-stack/download/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
+  integrity sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -677,6 +695,13 @@ duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmmirror.com/duplexer3/download/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
+
+ecdsa-sig-formatter@1.0.11:
+  version "1.0.11"
+  resolved "https://registry.npmmirror.com/ecdsa-sig-formatter/download/ecdsa-sig-formatter-1.0.11.tgz#ae0f0fa2d85045ef14a817daa3ce9acd0489e5bf"
+  integrity sha1-rg8PothQRe8UqBfao86azQSJ5b8=
+  dependencies:
+    safe-buffer "^5.0.1"
 
 editorconfig@^0.15.3:
   version "0.15.3"
@@ -1009,6 +1034,11 @@ imurmurhash@^0.1.4:
   resolved "https://registry.npmmirror.com/imurmurhash/download/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
 
+indent-string@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmmirror.com/indent-string/download/indent-string-4.0.0.tgz#624f8f4497d619b2d9768531d58f4122854d7251"
+  integrity sha1-Yk+PRJfWGbLZdoUx1Y9BIoVNclE=
+
 inflation@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/inflation/download/inflation-2.0.0.tgz#8b417e47c28f925a45133d914ca1fd389107f30f"
@@ -1284,6 +1314,22 @@ json-stringify-safe@5:
   resolved "https://registry.npmmirror.com/json-stringify-safe/download/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
+jsonwebtoken@^8.5.1:
+  version "8.5.1"
+  resolved "https://registry.npmmirror.com/jsonwebtoken/download/jsonwebtoken-8.5.1.tgz#00e71e0b8df54c2121a1f26137df2280673bcc0d"
+  integrity sha1-AOceC431TCEhofJhN98igGc7zA0=
+  dependencies:
+    jws "^3.2.2"
+    lodash.includes "^4.3.0"
+    lodash.isboolean "^3.0.3"
+    lodash.isinteger "^4.0.4"
+    lodash.isnumber "^3.0.3"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.once "^4.0.0"
+    ms "^2.1.1"
+    semver "^5.6.0"
+
 jstransformer@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/jstransformer/download/jstransformer-1.0.0.tgz#ed8bf0921e2f3f1ed4d5c1a44f68709ed24722c3"
@@ -1291,6 +1337,23 @@ jstransformer@1.0.0:
   dependencies:
     is-promise "^2.0.0"
     promise "^7.0.1"
+
+jwa@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.npmmirror.com/jwa/download/jwa-1.4.1.tgz#743c32985cb9e98655530d53641b66c8645b039a"
+  integrity sha1-dDwymFy56YZVUw1TZBtmyGRbA5o=
+  dependencies:
+    buffer-equal-constant-time "1.0.1"
+    ecdsa-sig-formatter "1.0.11"
+    safe-buffer "^5.0.1"
+
+jws@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.npmmirror.com/jws/download/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
+  integrity sha1-ABCZ82OUaMlBQADpmZX6UvtHgwQ=
+  dependencies:
+    jwa "^1.4.1"
+    safe-buffer "^5.0.1"
 
 kareem@2.3.2:
   version "2.3.2"
@@ -1388,6 +1451,15 @@ koa-json@^2.0.2:
     koa-is-json "1"
     streaming-json-stringify "3"
 
+koa-jwt@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmmirror.com/koa-jwt/download/koa-jwt-4.0.3.tgz#1ac8e69b538f7c23a1d7bc1aa5ee3ca12ac8c90d"
+  integrity sha1-Gsjmm1OPfCOh17wape48oSrIyQ0=
+  dependencies:
+    jsonwebtoken "^8.5.1"
+    koa-unless "^1.0.7"
+    p-any "^2.1.0"
+
 koa-logger@^3.2.0:
   version "3.2.1"
   resolved "https://registry.npmmirror.com/koa-logger/download/koa-logger-3.2.1.tgz#ab9db879526db3837cc9ce4fd983c025b1689f22"
@@ -1434,6 +1506,11 @@ koa-static@^5.0.0:
   dependencies:
     debug "^3.1.0"
     koa-send "^5.0.0"
+
+koa-unless@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmmirror.com/koa-unless/download/koa-unless-1.0.7.tgz#b9df375e2b4da3043918d48622520c2c0b79f032"
+  integrity sha1-ud83XitNowQ5GNSGIlIMLAt58DI=
 
 koa-views@^6.2.0:
   version "6.3.1"
@@ -1487,6 +1564,41 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.npmmirror.com/lazy-cache/download/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
   integrity sha1-odePw6UEdMuAhF07O24dpJpEbo4=
+
+lodash.includes@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npmmirror.com/lodash.includes/download/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
+  integrity sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=
+
+lodash.isboolean@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmmirror.com/lodash.isboolean/download/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+  integrity sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=
+
+lodash.isinteger@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.npmmirror.com/lodash.isinteger/download/lodash.isinteger-4.0.4.tgz#619c0af3d03f8b04c31f5882840b77b11cd68343"
+  integrity sha1-YZwK89A/iwTDH1iChAt3sRzWg0M=
+
+lodash.isnumber@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmmirror.com/lodash.isnumber/download/lodash.isnumber-3.0.3.tgz#3ce76810c5928d03352301ac287317f11c0b1ffc"
+  integrity sha1-POdoEMWSjQM1IwGsKHMX8RwLH/w=
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.npmmirror.com/lodash.isplainobject/download/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmmirror.com/lodash.isstring/download/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
+  integrity sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=
+
+lodash.once@^4.0.0:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/lodash.once/download/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
+  integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
 lodash@^4.17.4:
   version "4.17.21"
@@ -1796,10 +1908,32 @@ only@~0.0.2:
   resolved "https://registry.npmmirror.com/only/download/only-0.0.2.tgz#2afde84d03e50b9a8edc444e30610a70295edfb4"
   integrity sha1-Kv3oTQPlC5qO3EROMGEKcCle37Q=
 
+p-any@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/p-any/download/p-any-2.1.0.tgz#719489408e14f5f941a748f1e817f5c71cab35cb"
+  integrity sha1-cZSJQI4U9flBp0jx6Bf1xxyrNcs=
+  dependencies:
+    p-cancelable "^2.0.0"
+    p-some "^4.0.0"
+    type-fest "^0.3.0"
+
+p-cancelable@^2.0.0:
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/p-cancelable/download/p-cancelable-2.1.1.tgz#aab7fbd416582fa32a3db49859c122487c5ed2cf"
+  integrity sha1-qrf71BZYL6MqPbSYWcEiSHxe0s8=
+
 p-finally@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/p-finally/download/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
   integrity sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
+
+p-some@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.npmmirror.com/p-some/download/p-some-4.1.0.tgz#28e73bc1e0d62db54c2ed513acd03acba30d5c04"
+  integrity sha1-KOc7weDWLbVMLtUTrNA6y6MNXAQ=
+  dependencies:
+    aggregate-error "^3.0.0"
+    p-cancelable "^2.0.0"
 
 package-json@^4.0.0:
   version "4.0.1"
@@ -2497,6 +2631,11 @@ tsscmp@1.0.6:
   version "1.0.6"
   resolved "https://registry.npmmirror.com/tsscmp/download/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
   integrity sha1-hbmVg6w1iexL/vgltQAKqRHWBes=
+
+type-fest@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.npmmirror.com/type-fest/download/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
+  integrity sha1-Y9ANIE4FlHT+Xht8ARESu9HcKeE=
 
 type-is@^1.6.16:
   version "1.6.18"
