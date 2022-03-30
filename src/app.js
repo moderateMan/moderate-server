@@ -1,16 +1,32 @@
 const Koa = require('koa')
-const app = new Koa()
+
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const koaSession = require("koa-generic-session")
+const cors = require('koa2-cors');
 const koaJwt = require("./middlewares/jwt")
 require('./db/index')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+
+const app = new Koa()
+
+// 解决跨域
+app.use(cors({
+  origin: function (ctx) {
+     return 'https://zero2one.moderate.run/'; 
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS', 'PUT'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
+
 
 // error handler
 onerror(app)

@@ -7,7 +7,6 @@ mongoose.connect(db,{
     dbName:dbName
 })
 //链接mongoose
- 
 
 const conn = mongoose.connection;
 conn.on("connected",()=>{
