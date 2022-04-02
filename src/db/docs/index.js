@@ -31,6 +31,28 @@ exports.addDoc = async (data) => {
   return await Doc.create({ path });
 };
 
+
+/**
+ * regex 解析 文件头部信息
+ * 返回 mongo 需要的信息 字段
+ * @param data
+ * @returns {Promise<*>}
+ */
+exports.parseDoc = async (data) => {
+  /*
+  * var str = 'tom287aaa879bbb666';
+
+    var reg = /\d+/;
+
+    console.log(reg.exec(str));
+  * */
+
+  const { path } = data;
+  return await Doc.create({ path });
+};
+
+
+
 exports.deleteAll = async (collectioName) => {
     return await conn.dropCollection(collectioName)
 };

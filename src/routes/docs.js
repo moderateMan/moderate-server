@@ -1,5 +1,5 @@
 const router = require("koa-router")();
-const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll } = require("../db/docs");
+const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll ,parseDoc} = require("../db/docs");
 const { docsDir } = require("../config/index");
 const chokidar = require("chokidar");
 const isInitDoc =  process.env.initDoc === "true"
@@ -12,7 +12,8 @@ const toWatchFlies =async ()=>{
   watcher
     .on("add", function (path) {
       //TODO 解析md文档中描述describe
-      addDoc({path})
+      var describeInfo = parseDoc(path)
+      addDoc({path,describeInfo})
       console.log("File", path, "has been added");
     })
     .on("change", function (path) {
