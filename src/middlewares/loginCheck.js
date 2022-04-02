@@ -1,6 +1,6 @@
 /**
  * @description 登录校验
- * @author 双越
+ * @author 闲D阿强
  */
 
 const { jwtVerify } = require('../utils/jwt')

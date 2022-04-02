@@ -1,6 +1,6 @@
 /**
  * @description 环境变量
- * @author 双越
+ * @author 闲D阿强
  */
 
 const ENV = process.env.NODE_ENV || ''

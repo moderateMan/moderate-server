@@ -1,6 +1,6 @@
 /**
  * @description jwt - verify sign
- * @author 双越
+ * @author 闲D阿强
  */
 
 const util = require('util')

@@ -1,6 +1,6 @@
 /**
  * @description 配置项
- * @author 双越
+ * @author 闲D阿强
  */
 
 const { isPrdDev } = require('../utils/env')

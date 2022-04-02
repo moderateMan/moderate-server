@@ -1,8 +1,7 @@
 /**
  * @description dev 配置
- * @author 双越
+ * @author 闲D阿强
  */
-let devEnvs = require('./dev')
 module.exports = {
     // mongodb 连接配置
     mongodbConf: {
@@ -15,4 +14,7 @@ module.exports = {
         port: '6379',
         host: 'moderate-redis',
     },
+    docsDir:{
+        path:`${__dirname}/src/docs`
+    }
 }

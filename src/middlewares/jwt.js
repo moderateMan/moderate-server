@@ -1,8 +1,3 @@
-/**
- * @description 封装 jwt 插件
- * @author 双越
- */
-
 const jwtKoa = require('koa-jwt')
 const { JWT_SECRET, JWT_IGNORE_PATH } = require('../config/constant')
 

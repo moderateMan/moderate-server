@@ -1,13 +1,12 @@
 /**
  * @description dev 配置
- * @author 双越
+ * @author 闲D阿强
  */
- let devEnvs = require('./dev')
  module.exports = {
      // mongodb 连接配置
      mongodbConf: {
          host: '49.233.107.254',
-         port: '27016',
+         port: '27017',
          dbName: 'play',
      },
      // redis 连接配置
@@ -15,5 +14,8 @@
          port: '6379',
          host: 'moderate-redis',
      },
+     docsDir:{
+         path:`/Users/johnlee/workSpace/frontEnd/moderate-server/src/docs`
+     }
  }
  

@@ -10,8 +10,11 @@ const cors = require('koa2-cors');
 const koaJwt = require("./middlewares/jwt")
 require('./db/index')
 
+
+
 const index = require('./routes/index')
 const users = require('./routes/users')
+const docs = require('./routes/docs')
 
 const app = new Koa()
 
@@ -78,6 +81,7 @@ app.use(koaJwt)
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(docs.routes(), docs.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
