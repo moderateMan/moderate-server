@@ -5,10 +5,9 @@ const { v4: uuidv4 } = require("uuid");
 
 exports.GetDoc = async (ctx, next) => {
   let toReadFile = () => {
-    const id = ctx.request.body.id;
-    var dirList = fs.readdirSync(process.cwd() + "/src/docs");
+    const path = ctx.request.body.path;
     return new Promise((res, req) => {
-      fs.readFile(process.cwd() + "/src/docs/test.md", (err, data) => {
+      fs.readFile(path, (err, data) => {
         mdStr = data.toString();
         res("异步");
       });
@@ -33,6 +32,10 @@ exports.addDoc = async (data) => {
 
 exports.deleteAll = async (collectioName) => {
     return await conn.dropCollection(collectioName)
+};
+
+exports.getAll = async (data) => {
+    return await Doc.find(data);
 };
 
 exports.SaveDoc = async (ctx, next) => {

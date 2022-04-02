@@ -1,5 +1,5 @@
 const router = require("koa-router")();
-const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll } = require("../db/docs");
+const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll,getAll } = require("../db/docs");
 const { docsDir } = require("../config/index");
 const chokidar = require("chokidar");
 const isInitDoc =  process.env.initDoc === "true"
@@ -34,7 +34,19 @@ if(isInitDoc){
 }
 
 router.prefix("/docs");
-router.post("/getDoc", GetDoc); //注册用
+router.post("/list", async (ctx, next)=>{
+
+}); 
+router.post("/getDoc", GetDoc); 
+router.post("/getAll", async (ctx, next)=>{
+  var save = await getAll();
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: save,
+  };
+}); 
+
 
 router.post("/update", SaveDoc); //注册用
 module.exports = router;
