@@ -1,52 +1,103 @@
 const router = require("koa-router")();
-const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll,getAll } = require("../db/docs");
+const fs = require('fs')
+const {
+  SaveDoc,
+  GetDoc,
+  addDoc,
+  deleteDoc,
+  deleteAll,
+  getAll,
+} = require("../db/docs");
 const { docsDir } = require("../config/index");
 const chokidar = require("chokidar");
-const isInitDoc =  process.env.initDoc === "true"
+const isInitDoc = process.env.initDoc === "true";
+/**
+ * regex 解析 文件头部信息
+ * 返回 mongo 需要的信息 字段
+ * @param data
+ * @returns {Promise<*>}
+ */
+const parseDoc = async (path) => {
+  var text = "";
+  let toReadFile = () => {
+    return new Promise((res, req) => {
+      fs.readFile(path, (err, data) => {
+        text = data.toString();
+        res("异步");
+      });
+    });
+  };
+  await toReadFile();
+  // 先截取  describe 优化后面 匹配性能
+  var describe = text.match(/<describe>([\d\D]*?)<\/describe>/)[1];
+  // 分别获取 title 等~~
+  var title = describe.match(/title:\s*(.*?)\s*\n/)[1];
+  var subhead = describe.match(/subhead:\s*(.*?)\s*\n/)[1];
+  var cover = describe.match(/cover:\s*(\S*?)\s*\n/)[1];
+  var date = describe.match(/date:\s*(\S*?)\s*\n/)[1];
+  // TODO tag 支持 多个 >>> 数组
+  // var tags = describe.match(/tags:[\d\D]*?- (.*)\s*\n/)[1]
+  var tags0 = describe.match(/tags:\s*(\S*?)\s*\n/)?.[1];
 
-const toWatchFlies =async ()=>{
+  var desJson = {
+    title,
+    subhead,
+    cover,
+    date,
+    tags: [tags0],
+  };
+  // desJson = {
+  //   title: "golang操作mongodb",
+  //   subhead: "工欲善其事必 先利其器",
+  //   cover: "/img/lynk/64.jpg\n",
+  //   date: "2020-02-26",
+  //   tags: ["Golang"],
+  // };
+  return desJson;
+};
+
+const toWatchFlies = async () => {
   const watcher = chokidar.watch(docsDir.path, {
     ignored: /[\/\\]\./,
     ignoreInitial: !isInitDoc,
   });
   watcher
-    .on("add", function (path) {
+    .on("add", async function (path) {
       //TODO 解析md文档中描述describe
-      addDoc({path})
+      var describeInfo = await parseDoc(path);
+      addDoc({ path, ...describeInfo });
       console.log("File", path, "has been added");
     })
     .on("change", function (path) {
-      deleteDoc({path})
-      addDoc({path})
-      console.log("File", path, "has been added");
+      deleteDoc({ path });
+      var describeInfo = parseDoc(path);
+      addDoc({ path });
+      console.log("File", path, "has been change");
     })
     .on("unlink", function (path) {
-      deleteDoc({path})
+      deleteDoc({ path });
       console.log("File", path, "has been delete");
     });
-}
-if(isInitDoc){
-  deleteAll("docs").then(()=>{
-    toWatchFlies()
-  })
-}else{
-  toWatchFlies()
+};
+if (isInitDoc) {
+  deleteAll("docs").then(() => {
+    toWatchFlies();
+  });
+} else {
+  toWatchFlies();
 }
 
 router.prefix("/docs");
-router.post("/list", async (ctx, next)=>{
-
-}); 
-router.post("/getDoc", GetDoc); 
-router.post("/getAll", async (ctx, next)=>{
+router.post("/list", async (ctx, next) => {});
+router.post("/getDoc", GetDoc);
+router.post("/getAll", async (ctx, next) => {
   var save = await getAll();
   ctx.response.body = {
     status: 1,
     code: "200",
     data: save,
   };
-}); 
-
+});
 
 router.post("/update", SaveDoc); //注册用
 module.exports = router;

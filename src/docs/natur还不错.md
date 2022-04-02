@@ -1,7 +1,7 @@
 <describe>
   title: Natur还不错
   cover: Pasted-image-20211031142235.png
-  subtitle: 如今我遇到了Natur，才会越发地觉得合适
+  subhead: 如今我遇到了Natur，才会越发地觉得合适
   date: 2022/4/2
 </describe>
 

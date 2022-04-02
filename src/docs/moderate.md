@@ -1,7 +1,7 @@
 <describe>
   title: Moderate脚手架
   cover: ezgif.com-gif-maker-10444ce63768eb8f0e.gif
-  subtitle: 那么我们梳理一下思路，我们从`hooks`助力函数组件聊起。 
+  subhead: 那么我们梳理一下思路，我们从`hooks`助力函数组件聊起。 
   date: 2022/4/2
 </describe>
 

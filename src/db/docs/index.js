@@ -1,5 +1,5 @@
-const { Doc,Connection } = require("./model.js");
-const {conn} = require("../index")
+const { Doc, Connection } = require("./model.js");
+const { conn } = require("../index");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
@@ -26,16 +26,21 @@ exports.deleteDoc = async (data) => {
 };
 
 exports.addDoc = async (data) => {
-  const { path } = data;
-  return await Doc.create({ path });
+  return await Doc.create(data);
 };
 
+
 exports.deleteAll = async (collectioName) => {
-    return await conn.dropCollection(collectioName)
+    if(conn.collection[collectioName]){
+        return await conn.collection[collectioName].deleteMany()
+    }else{
+        return Promise.resolve()
+    }
 };
 
 exports.getAll = async (data) => {
-    return await Doc.find(data);
+    
+  return await Doc.find(data);
 };
 
 exports.SaveDoc = async (ctx, next) => {
@@ -76,4 +81,3 @@ exports.DeleteDoc = async (ctx, next) => {
     };
   }
 };
-

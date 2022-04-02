@@ -1,7 +1,7 @@
 <describe>
   title: 强化一波hooks原理
   cover: ezgif.com-gif-maker-12.gif
-  subtitle: 那么我们梳理一下思路，我们从`hooks`助力函数组件聊起。 
+  subhead: 那么我们梳理一下思路，我们从`hooks`助力函数组件聊起。 
   date: 2022/4/2
 </describe>
 
