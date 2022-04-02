@@ -3,6 +3,7 @@ const { SaveDoc, GetDoc,addDoc,deleteDoc,deleteAll } = require("../db/docs");
 const { docsDir } = require("../config/index");
 const chokidar = require("chokidar");
 const isInitDoc =  process.env.initDoc === "true"
+
 const toWatchFlies =async ()=>{
   const watcher = chokidar.watch(docsDir.path, {
     ignored: /[\/\\]\./,
@@ -10,6 +11,12 @@ const toWatchFlies =async ()=>{
   });
   watcher
     .on("add", function (path) {
+      //TODO 解析md文档中描述describe
+      addDoc({path})
+      console.log("File", path, "has been added");
+    })
+    .on("change", function (path) {
+      deleteDoc({path})
       addDoc({path})
       console.log("File", path, "has been added");
     })
