@@ -3,6 +3,7 @@ const fs = require('fs')
 const {
   SaveDoc,
   GetDoc,
+  getCount,
   addDoc,
   deleteDoc,
   deleteAll,
@@ -92,10 +93,11 @@ router.post("/list", async (ctx, next) => {});
 router.post("/getDoc", GetDoc);
 router.post("/getAll", async (ctx, next) => {
   var save = await getAll();
+  var docSize = await getCount();
   ctx.response.body = {
     status: 1,
     code: "200",
-    data: save,
+    data: {save,docSize},
   };
 });
 

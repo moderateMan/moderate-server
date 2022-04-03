@@ -28,6 +28,8 @@ exports.queryDoc = async(ctx,next)=>{
   };
 }
 
+
+
 exports.GetDoc = async (ctx, next) => {
   let toReadFile = () => {
     const path = ctx.request.body.path;
@@ -63,8 +65,11 @@ exports.deleteAll = async (collectioName) => {
     }
 };
 
+exports.getCount = async() =>{
+  return await Doc.count();
+}
+
 exports.getAll = async (data) => {
-    
   return await Doc.find(data);
 };
 
