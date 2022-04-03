@@ -3,6 +3,33 @@ const { conn } = require("../index");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
+
+/**
+ * 查询 文章错 mongo文档中
+ * @param ctx
+ * @param next
+ * @returns {Promise<void>}
+ */
+exports.queryDoc = async(ctx,next)=>{
+  // TODO 解析入参
+  // ctx.request.body
+
+  var {
+    total,
+    pageSize,
+    pageIndex,
+    queryStr
+  } = ctx.request.body // 解析 json 格式
+
+  Doc.find({title:{$regex:queryStr}}).skip(pageIndex-1*pageSize).limit(pageSize).sort({date:1})
+
+  ctx.response.body = {
+    status: 1, code: "200", data: mdStr,
+  };
+}
+
+
+
 exports.GetDoc = async (ctx, next) => {
   let toReadFile = () => {
     const path = ctx.request.body.path;
@@ -41,6 +68,10 @@ exports.deleteAll = async (collectioName) => {
         return Promise.resolve()
     }
 };
+
+exports.getCount = async() =>{
+  return await Doc.count();
+}
 
 exports.getAll = async (data) => {
   return await Doc.find(data);
