@@ -1,4 +1,4 @@
-const { Doc, Connection } = require("./model.js");
+const { Doc } = require("./model.js");
 const { conn } = require("../index");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
@@ -8,7 +8,7 @@ exports.GetDoc = async (ctx, next) => {
     const path = ctx.request.body.path;
     return new Promise((res, req) => {
       fs.readFile(path, (err, data) => {
-        mdStr = data.toString();
+        mdStr = data?.toString();
         res("异步");
       });
     });
@@ -19,6 +19,10 @@ exports.GetDoc = async (ctx, next) => {
     code: "200",
     data: mdStr,
   };
+};
+
+exports.findDoc = async (data) => {
+    return await Doc.findOne(data);
 };
 
 exports.deleteDoc = async (data) => {
@@ -39,7 +43,6 @@ exports.deleteAll = async (collectioName) => {
 };
 
 exports.getAll = async (data) => {
-    
   return await Doc.find(data);
 };
 

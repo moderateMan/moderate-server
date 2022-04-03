@@ -8,6 +8,7 @@ const uSchema = new mongoose.Schema({
   cover:String,
   date:String,
   tags:Object,
+  author:Object
 })
  
 exports.Doc = mongoose.model('docs',uSchema)

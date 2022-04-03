@@ -1,5 +1,5 @@
 const router = require("koa-router")();
-const fs = require('fs')
+const fs = require("fs");
 const {
   SaveDoc,
   GetDoc,
@@ -7,6 +7,7 @@ const {
   deleteDoc,
   deleteAll,
   getAll,
+  findDoc,
 } = require("../db/docs");
 const { docsDir } = require("../config/index");
 const chokidar = require("chokidar");
@@ -46,13 +47,6 @@ const parseDoc = async (path) => {
     date,
     tags: [tags0],
   };
-  // desJson = {
-  //   title: "golang操作mongodb",
-  //   subhead: "工欲善其事必 先利其器",
-  //   cover: "/img/lynk/64.jpg\n",
-  //   date: "2020-02-26",
-  //   tags: ["Golang"],
-  // };
   return desJson;
 };
 
@@ -68,10 +62,10 @@ const toWatchFlies = async () => {
       addDoc({ path, ...describeInfo });
       console.log("File", path, "has been added");
     })
-    .on("change", function (path) {
+    .on("change",async function (path) {
       deleteDoc({ path });
-      var describeInfo = parseDoc(path);
-      addDoc({ path });
+      var describeInfo = await parseDoc(path);
+      addDoc({ path, ...describeInfo });
       console.log("File", path, "has been change");
     })
     .on("unlink", function (path) {
@@ -89,7 +83,24 @@ if (isInitDoc) {
 
 router.prefix("/docs");
 router.post("/list", async (ctx, next) => {});
-router.post("/getDoc", GetDoc);
+router.post("/getDoc", async (ctx, next) => {
+  let toReadFile = async () => {
+    const docData = await findDoc({ _id: ctx.request.body.id });
+    const path = docData.path;
+    return new Promise((res, req) => {
+      fs.readFile(path, (err, data) => {
+        mdStr = data?.toString();
+        res("");
+      });
+    });
+  };
+  await toReadFile();
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: mdStr,
+  };
+});
 router.post("/getAll", async (ctx, next) => {
   var save = await getAll();
   ctx.response.body = {
@@ -99,5 +110,5 @@ router.post("/getAll", async (ctx, next) => {
   };
 });
 
-router.post("/update", SaveDoc); //注册用
+router.post("/update", SaveDoc); 
 module.exports = router;
