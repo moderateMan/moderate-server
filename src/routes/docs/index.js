@@ -73,8 +73,9 @@ const toWatchFlies = async () => {
     ignoreInitial: !isInitDoc,
   });
   const toAdd = async (path) => {
-    const docName = path.split("/").at(-1);
+    console.log("path"+path)
     const strArr = path.split("/");
+    const docName = strArr[strArr.length-1];
     const pathPrefix = path
       .split("/")
       .slice(0, strArr.length - 1)
