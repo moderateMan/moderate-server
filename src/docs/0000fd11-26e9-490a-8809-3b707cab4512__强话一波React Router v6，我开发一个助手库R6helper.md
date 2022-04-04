@@ -2,7 +2,8 @@
   title: 强话一波React Router v6，我开发一个助手库R6helper
   cover: 128a8d6c3be5416ba30b8243fed7eb4f_tplv-k3u1fbpfcp-zoom-1.png
   subhead: 辅助强化 React-router v6 的功能
-  date: 2022/4/2
+  date: 2022/4/3
+  tags: react
 </describe>
 
 <p align="center">

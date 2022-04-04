@@ -36,7 +36,7 @@ exports.GetDoc = async (ctx, next) => {
     return new Promise((res, req) => {
       fs.readFile(path, (err, data) => {
         mdStr = data?.toString();
-        res("异步");
+        res("");
       });
     });
   };
@@ -62,8 +62,8 @@ exports.addDoc = async (data) => {
 
 
 exports.deleteAll = async (collectioName) => {
-    if(conn.collection[collectioName]){
-        return await conn.collection[collectioName].deleteMany()
+    if(conn.collections[collectioName]){
+        return await conn.collections[collectioName].deleteMany()
     }else{
         return Promise.resolve()
     }
@@ -74,7 +74,13 @@ exports.getCount = async() =>{
 }
 
 exports.getAll = async (data) => {
-  return await Doc.find(data);
+  const {
+    pageSize=100,
+    pageIndex=1,
+    queryStr=""
+  } = data// 解析 json 格式
+  // return await Doc.find(data).sort({date:1});
+  return await Doc.find({title:{$regex:queryStr}}).skip((pageIndex-1)*pageSize).limit(pageSize).sort({date:1})
 };
 
 exports.SaveDoc = async (ctx, next) => {
@@ -115,3 +121,8 @@ exports.DeleteDoc = async (ctx, next) => {
     };
   }
 };
+
+
+exports.addNode = async() =>{
+    return await Doc.count();
+ }

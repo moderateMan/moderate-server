@@ -1,5 +1,8 @@
 const router = require("koa-router")();
+const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
+const { generate, getDimension, initEdges } = require("./generate/index");
+let Separator = "__";
 const {
   SaveDoc,
   GetDoc,
@@ -9,17 +12,29 @@ const {
   deleteAll,
   getAll,
   findDoc,
-} = require("../db/docs");
-const { docsDir } = require("../config/index");
+} = require("../../db/docs");
+const {} = require("../../db/atlas");
+const { docsDir } = require("../../config/index");
 const chokidar = require("chokidar");
+
+let atlas = { nodes: [], edges: [] };
+let atlasType = 0;
+// 生成组织数据
+const toGenerateAtlas = (type) => {
+  const dimension = getDimension(type);
+  atlas.nodes = Object.values(dimension);
+  return atlas;
+};
+toGenerateAtlas();
 const isInitDoc = process.env.initDoc === "true";
+
 /**
  * regex 解析 文件头部信息
  * 返回 mongo 需要的信息 字段
  * @param data
  * @returns {Promise<*>}
  */
-const parseDoc = async (path) => {
+const parseDoc = async (path, id) => {
   var text = "";
   let toReadFile = () => {
     return new Promise((res, req) => {
@@ -29,6 +44,7 @@ const parseDoc = async (path) => {
       });
     });
   };
+
   await toReadFile();
   // 先截取  describe 优化后面 匹配性能
   var describe = text.match(/<describe>([\d\D]*?)<\/describe>/)[1];
@@ -56,17 +72,55 @@ const toWatchFlies = async () => {
     ignored: /[\/\\]\./,
     ignoreInitial: !isInitDoc,
   });
+  const toAdd = async (path) => {
+    const docName = path.split("/").at(-1);
+    const strArr = path.split("/");
+    const pathPrefix = path
+      .split("/")
+      .slice(0, strArr.length - 1)
+      .join("/");
+
+    let id =
+      docName.split(Separator) > 1 ? docName.split(Separator)[0] : uuidv4();
+    let toReWriteFile = () => {
+      return new Promise((res, req) => {
+        if (docName.split(Separator).length > 1) {
+          res();
+        } else {
+          const newPath = `${pathPrefix}/${id}${Separator}${docName}`;
+          fs.rename(path, newPath, function (err) {
+            path = newPath;
+            res();
+          });
+        }
+      });
+    };
+    await toReWriteFile();
+    //TODO 解析md文档中描述describe
+    const describeInfo = await parseDoc(path);
+    const docTemp = { id, path, ...describeInfo };
+    let atlaItem = generate(docTemp);
+    if (atlaItem) {
+      const { node, edge } = atlaItem;
+      node && atlas.nodes.push(node);
+      atlas.nodes.forEach((item) => {
+        if (node.tags.includes(item.tag)) {
+          item.childrenNum++;
+        }
+      });
+      edge && atlas.edges.push(edge);
+    }
+
+    addDoc(docTemp);
+    console.log("File", path, "has been added");
+  };
   watcher
     .on("add", async function (path) {
-      //TODO 解析md文档中描述describe
-      var describeInfo = await parseDoc(path);
-      addDoc({ path, ...describeInfo });
-      console.log("File", path, "has been added");
+      toAdd(path);
     })
-    .on("change",async function (path) {
+    .on("change", async function (path) {
       deleteDoc({ path });
-      var describeInfo = await parseDoc(path);
-      addDoc({ path, ...describeInfo });
+      toAdd(path);
       console.log("File", path, "has been change");
     })
     .on("unlink", function (path) {
@@ -74,6 +128,7 @@ const toWatchFlies = async () => {
       console.log("File", path, "has been delete");
     });
 };
+
 if (isInitDoc) {
   deleteAll("docs").then(() => {
     toWatchFlies();
@@ -85,8 +140,9 @@ if (isInitDoc) {
 router.prefix("/docs");
 router.post("/list", async (ctx, next) => {});
 router.post("/getDoc", async (ctx, next) => {
+  let docData;
   let toReadFile = async () => {
-    const docData = await findDoc({ _id: ctx.request.body.id });
+    docData = await findDoc({ id: ctx.request.body.id });
     const path = docData.path;
     return new Promise((res, req) => {
       fs.readFile(path, (err, data) => {
@@ -99,18 +155,26 @@ router.post("/getDoc", async (ctx, next) => {
   ctx.response.body = {
     status: 1,
     code: "200",
-    data: mdStr,
+    data: { content: mdStr, ...docData._doc },
+  };
+});
+router.post("/atlas", async (ctx, next) => {
+  atlasType = ctx.request.body?.type;
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: atlas,
   };
 });
 router.post("/getAll", async (ctx, next) => {
-  var save = await getAll();
+  var list = await getAll(ctx.request.body);
   var docSize = await getCount();
   ctx.response.body = {
     status: 1,
     code: "200",
-    data: {save,docSize},
+    data: { list, docSize },
   };
 });
 
-router.post("/update", SaveDoc); 
+router.post("/update", SaveDoc);
 module.exports = router;

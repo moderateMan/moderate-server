@@ -1,6 +1,6 @@
 const mongoose =  require('mongoose')
 const uSchema = new mongoose.Schema({
-  id:Number,
+  id:String,
   name:String,
   path:String,
   title:String,
@@ -12,4 +12,3 @@ const uSchema = new mongoose.Schema({
 })
  
 exports.Doc = mongoose.model('docs',uSchema)
-exports.Connection =  mongoose.connection.dropCollection('docs')

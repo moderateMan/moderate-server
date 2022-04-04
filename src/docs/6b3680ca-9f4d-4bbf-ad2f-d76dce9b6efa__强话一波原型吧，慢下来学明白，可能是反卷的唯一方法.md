@@ -2,7 +2,8 @@
   title: 强话一波原型吧，慢下来学明白，可能是反卷的唯一方法
   cover: 原型.png
   subhead: “最普通的食材”首选就应该是红宝书了。 
-  date: 2022/4/2
+  date: 2022/4/3
+  tags: basics
 </describe>
 
 # 引言
