@@ -8,9 +8,10 @@ const logger = require('koa-logger')
 const koaSession = require("koa-generic-session")
 const cors = require('koa2-cors');
 const koaJwt = require("./middlewares/jwt")
+const path = require('path')
 require('./db/index')
 
-console.log("admin最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
+console.log("admin最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！",path.resolve('src/docs'))
 //123
 const index = require('./routes/index')
 const users = require('./routes/users')
