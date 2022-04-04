@@ -22,8 +22,8 @@ services:
       volumes:
           - '.docker-volumes/mongo/data:/data/db' # 数据持久化
       environment:
-          - MONGO_INITDB_ROOT_USERNAME=play
-          - MONGO_INITDB_ROOT_PASSWORD=play
+          - MONGO_INITDB_ROOT_USERNAME=admin
+          - MONGO_INITDB_ROOT_PASSWORD=123456
           - TZ=Asia/Shanghai # 设置时区
       ports:
           - '27016:27017' # 宿主机可以用 127.0.0.1:27016 即可连接容器中的数据库
