@@ -12,6 +12,7 @@ const path = require('path')
 require('./db/index')
 
 console.log("admin最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！",path.resolve('src/docs'))
+
 //123
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -19,6 +20,8 @@ const docs = require('./routes/docs')
 
 const app = new Koa()
 
+const sslify = require('koa-sslify').default
+app.use(sslify())
 // 解决跨域
 app.use(cors({
   origin: function (ctx) {
