@@ -26,11 +26,11 @@ var port = normalizePort(process.env.PORT || '3000');
   cert: fs.readFileSync('ssl/moderate.pem'),
 }
 // var server = http.createServer(app.callback());
-https.createServer(options, app.callback()).listen(3000, (err) => {
+https.createServer(options, app.callback()).listen(process.env.PORT, (err) => {
   if (err) {
     console.log('server error: ', err);
   } else {
-    console.log('server at' + 3001);
+    console.log('server at' + process.env.PORT);
   } 
 });
 /**
