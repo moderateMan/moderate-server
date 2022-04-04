@@ -10,7 +10,7 @@ const cors = require('koa2-cors');
 const koaJwt = require("./middlewares/jwt")
 require('./db/index')
 
-console.log("最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
+console.log("12312312最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
 //123
 const index = require('./routes/index')
 const users = require('./routes/users')
