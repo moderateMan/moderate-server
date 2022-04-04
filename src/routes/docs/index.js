@@ -52,7 +52,7 @@ const parseDoc = async (path, id) => {
   var title = describe.match(/title:\s*(.*?)\s*\n/)[1];
   var subhead = describe.match(/subhead:\s*(.*?)\s*\n/)[1];
   var cover = describe.match(/cover:\s*(\S*?)\s*\n/)[1];
-  var date = describe.match(/date:\s*(\S*?)\s*\n/)[1];
+  var date = describe.match(/date:\s*(.*?)\n/)[1];
   // TODO tag 支持 多个 >>> 数组
   // var tags = describe.match(/tags:[\d\D]*?- (.*)\s*\n/)[1]
   var tags0 = describe.match(/tags:\s*(\S*?)\s*\n/)?.[1];
