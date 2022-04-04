@@ -2,6 +2,11 @@
  * @description dev 配置
  * @author 闲D阿强
  */
+ const path = require('path')
+ const fs = require('fs')
+ const appDirectory = fs.realpathSync(process.cwd())
+ const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
+
 module.exports = {
     // mongodb 连接配置
     mongodbConf: {
@@ -15,6 +20,6 @@ module.exports = {
         host: 'moderate-redis',
     },
     docsDir:{
-        path:`${__dirname}/src/docs`
+        path:resolveApp('src/docs')
     }
 }
