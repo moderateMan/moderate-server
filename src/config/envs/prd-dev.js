@@ -10,6 +10,8 @@ module.exports = {
         host: 'moderate-mongo',
         port: '27017',
         dbName: 'play',
+        user:"admin",
+        password:"123456"
     },
     // redis 连接配置
     redisConf: {

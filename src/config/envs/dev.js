@@ -8,6 +8,8 @@
          host: '49.233.107.254',
          port: '27017',
          dbName: 'play',
+         user:"play",
+         password:"play"
      },
      // redis 连接配置
      redisConf: {
