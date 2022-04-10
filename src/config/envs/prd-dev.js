@@ -20,5 +20,9 @@ module.exports = {
     },
     docsDir:{
         path:path.resolve('src/docs')
-    }
+    },
+    // 代码资源路径
+    codesDir:{
+       path:path.resolve('src/codes')
+   }
 }

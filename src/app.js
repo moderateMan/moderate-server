@@ -10,12 +10,14 @@ const cors = require('koa2-cors');
 const koaJwt = require("./middlewares/jwt")
 const path = require('path')
 require('./db/index')
-
+const test = require('./redux-toolkit.cjs.development')
+globalThis.toolKita
 console.log("admin最新代码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！",path.resolve('src/docs'))
-//123
+//路由
 const index = require('./routes/index')
 const users = require('./routes/users')
 const docs = require('./routes/docs')
+const codes = require('./routes/codes')
 
 const app = new Koa()
 
@@ -85,6 +87,7 @@ app.use(koaJwt)
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(docs.routes(), docs.allowedMethods())
+app.use(codes.routes(), codes.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

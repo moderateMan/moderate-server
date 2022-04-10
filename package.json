@@ -13,6 +13,7 @@
   "dependencies": {
     "chokidar": "^3.5.3",
     "debug": "^4.1.1",
+    "immer": "^9.0.12",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -28,8 +29,12 @@
     "koa-views": "^6.2.0",
     "koa2-cors": "^2.0.6",
     "mongoose": "^6.1.1",
+    "pm2": "^5.2.0",
     "pug": "^2.0.3",
     "react-refresh": "^0.12.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
+    "reselect": "^4.1.5",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

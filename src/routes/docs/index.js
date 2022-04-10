@@ -81,13 +81,13 @@ const toWatchFlies = async () => {
       .slice(0, strArr.length - 1)
       .join("/");
 
-    let id =
-      docName.split(Separator) > 1 ? docName.split(Separator)[0] : uuidv4();
+    let id =docName.split(Separator).length > 1 && docName.split(Separator)[0];
     let toReWriteFile = () => {
       return new Promise((res, req) => {
-        if (docName.split(Separator).length > 1) {
+        if (id) {
           res();
         } else {
+          id = uuidv4()
           const newPath = `${pathPrefix}/${id}${Separator}${docName}`;
           fs.rename(path, newPath, function (err) {
             path = newPath;
@@ -173,7 +173,10 @@ router.post("/getAll", async (ctx, next) => {
   ctx.response.body = {
     status: 1,
     code: "200",
-    data: { list, docSize },
+    data: { list:list.map((item)=>{
+      const {path,_id,__v,...rest} = item._doc;
+      return rest
+    }), docSize },
   };
 });
 
