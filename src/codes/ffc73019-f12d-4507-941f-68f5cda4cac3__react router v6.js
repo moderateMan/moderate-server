@@ -1,6 +1,6 @@
 const describe = {
   title: "Redux demo",
-  cover: "r6.png",
+  cover: "redux.png",
   subhead: "Redux demo",
   date: "2022/4/3",
   tags: "react"
@@ -146,6 +146,10 @@ const config = {
       {
         name: "reduxToolkit",
         url: "/resources/redux-toolkit.cjs.production.min.js",
+      },
+      {
+        name: "vue3",
+        url: "https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.js",
       },
     ],
   },

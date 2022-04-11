@@ -1,8 +1,8 @@
 const describe = {
-  title: "React Router v6 demo(1)",
+  title: "React Router v6 demo",
   cover: "r6.png",
   subhead: "辅助强化 React-router v6 的功能",
-  date: "2022/4/3",
+  date: "2022/4/2",
   tags: "react"
 }
   
@@ -123,6 +123,11 @@ const config = {
         name: "antd",
         url: "https://cdn.bootcdn.net/ajax/libs/antd/4.19.4/antd.js",
       },
+      {
+        name: "vue3",
+        url: "https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.js",
+      },
+     
     ],
   },
 };
