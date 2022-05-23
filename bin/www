@@ -50,6 +50,7 @@ if (!isDev) {
 
   var server = http.createServer(app.callback());
   server.listen(port);
+  console.log("server at" + port);
   server.on("error", onError);
   server.on("listening", onListening);
 }

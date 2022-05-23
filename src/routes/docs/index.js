@@ -12,6 +12,7 @@ const {
   deleteAll,
   getAll,
   findDoc,
+  
 } = require("../../db/docs");
 const {} = require("../../db/atlas");
 const { docsDir } = require("../../config/index");
