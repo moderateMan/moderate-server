@@ -80,7 +80,7 @@ exports.getAll = async (data) => {
     queryStr=""
   } = data// 解析 json 格式
   // return await Doc.find(data).sort({date:1});
-  return await Doc.find({title:{$regex:queryStr}}).skip((pageIndex-1)*pageSize).limit(pageSize).sort({date:1})
+  return await Doc.find({title:{$regex:queryStr}}).skip((pageIndex-1)*pageSize).limit(pageSize).sort({date:-1})
 };
 
 exports.SaveDoc = async (ctx, next) => {
