@@ -55,6 +55,14 @@ const frontend = {
     tag: "miniApp",
     tags: ["frontend"],
   },
+  game: {
+    id: "game",
+    name: "游戏开发",
+    level: 0,
+    childrenNum: 0,
+    tag: "game",
+    tags: ["frontend"],
+  },
   graph: {
     id: "graph",
     name: "图形2d&3d",
