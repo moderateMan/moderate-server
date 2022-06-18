@@ -47,6 +47,14 @@ const frontend = {
     tag: "react",
     tags: ["frontend"],
   },
+  miniApp: {
+    id: "miniApp",
+    name: "小程序开发",
+    level: 0,
+    childrenNum: 0,
+    tag: "miniApp",
+    tags: ["frontend"],
+  },
   graph: {
     id: "graph",
     name: "图形2d&3d",
