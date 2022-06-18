@@ -31,9 +31,17 @@ const frontend = {
     tag: "standard",
     tags: ["frontend"],
   },
+  read: {
+    id: "read",
+    name: "读书笔记",
+    level: 0,
+    childrenNum: 0,
+    tag: "read",
+    tags: ["frontend"],
+  },
   basics: {
     id: "basics",
-    name: "读书&基础",
+    name: "基础沉淀",
     level: 0,
     childrenNum: 0,
     tag: "basics",
