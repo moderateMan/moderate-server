@@ -20,7 +20,7 @@ services:
       container_name: moderate-mongo
       restart: always
       volumes:
-          - '.docker-volumes/mongo/data:/data/db' # 数据持久化
+          - '/home/dockerVolumes/mongo/data:/data/db' # 数据持久化
       environment:
           - MONGO_INITDB_ROOT_USERNAME=admin
           - MONGO_INITDB_ROOT_PASSWORD=123456

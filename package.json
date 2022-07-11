@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=dev PORT=3060  ./node_modules/.bin/nodemon bin/www",
     "dev-initDoc": "cross-env NODE_ENV=dev PORT=3060 initDoc=true ./node_modules/.bin/nodemon bin/www",
     "prd-dev": "cross-env NODE_ENV=prd_dev PORT=3060 ./node_modules/.bin/nodemon start bin/www -f",
-    "prd": "cross-env NODE_ENV=prd_dev PORT=3060 pm2 start bin/www -f",
+    "prd": "cross-env NODE_ENV=prd_dev initDoc=true PORT=3060 pm2 start bin/www -f",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
