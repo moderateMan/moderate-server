@@ -6,10 +6,7 @@ services:
         dockerfile: Dockerfile
     image: moderate-server
     container_name: moderate-server
-    volumes:
-          - '/home/play/projects/myUniverse:/myUniverse' # 数据持久化
-          - '/home/play/projects/myUniverse/docs:/docs' # 数据持久化
-    ports:
+j    ports:
       - 3061:3060
   moderate-redis:
     image: redis
