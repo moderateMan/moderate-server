@@ -117,9 +117,9 @@ function onListening() {
 
 
 let exec = require('child_process').exec;
-let cmd = 'cd mui && git log -p -1';
+let cmd = 'cd /mui && git log -p -1';
 
 exec(cmd, function(error, stdout, stderr) {
   // 获取命令执行的输出
-  console.log(stdout)
+  console.log("测试log命令"+stdout)
 });
