@@ -19,7 +19,7 @@ module.exports = {
         host: 'moderate-redis',
     },
     docsDir:{
-        path:path.resolve('src/docs')
+        path:"/docs"
     },
     // 代码资源路径
     codesDir:{

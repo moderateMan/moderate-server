@@ -7,7 +7,7 @@ services:
     image: moderate-server
     container_name: moderate-server
     volumes:
-          - '/home/play/projects/moderate-server:/mui' # 数据持久化
+          - '/home/play/projects/docs:/docs' # 数据持久化
     
     ports:
       - 3061:3060

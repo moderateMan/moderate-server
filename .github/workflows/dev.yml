@@ -16,6 +16,7 @@ on:
             - 'bin/*'
             - 'docs/*'
             - 'config/*'
+            - 'records/*'
 
 jobs:
     deploy-dev:
