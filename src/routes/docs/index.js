@@ -86,6 +86,9 @@ const toWatchFlies = async () => {
     let toReWriteFile = () => {
       return new Promise((res, req) => {
         if (id) {
+          deleteDoc({
+            path
+          })
           res();
         } else {
           id = uuidv4()
@@ -112,8 +115,9 @@ const toWatchFlies = async () => {
       });
       edge && atlas.edges.push(edge);
     }
-
-    addDoc(docTemp);
+    
+      addDoc(docTemp);
+    
     console.log("File", path, "has been added");
   };
   watcher
