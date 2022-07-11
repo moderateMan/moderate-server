@@ -8,7 +8,7 @@ services:
     container_name: moderate-server
     volumes:
           - '/home/play/projects/myUniverse/docs:/docs' # 数据持久化
-           - '/home/play/projects/myUniverse:/myUniverse' # 数据持久化
+          - '/home/play/projects/myUniverse:/myUniverse' # 数据持久化
     
     ports:
       - 3061:3060
