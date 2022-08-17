@@ -15,6 +15,8 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const docs = require('./routes/docs')
 const codes = require('./routes/codes')
+const cli = require('./routes/cli')
+
 
 const app = new Koa()
 
@@ -85,6 +87,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(docs.routes(), docs.allowedMethods())
 app.use(codes.routes(), codes.allowedMethods())
+app.use(cli.routes(), cli.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
