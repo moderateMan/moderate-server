@@ -1,6 +1,8 @@
 # moderate-server
 server from moderate
 
+[![OSCS Status](https://www.oscs1024.com/platform/badge/moderateMan/moderate-server.git.svg?size=small)](https://www.murphysec.com/dr/vPKQr8wxJbd1k0wNsT)
+
 # 文档托管后台过程
 ## 前端动态请求后台md数据
 后台通过nodejs中的fs模块读取指定文件夹下的md文件，并格式化成字符串传给前端，
