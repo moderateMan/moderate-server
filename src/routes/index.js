@@ -22,6 +22,30 @@ router.get('/project/template', async (ctx, next) => {
   }
 })
 
+// 获取列表信息
+router.post("/api/list", async (ctx, next) => {
+  const list = [{ id: 1 }, { id: 2 }]
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: {
+      list,
+    },
+  };
+});
 
+
+// 获取列表信息
+router.post("/api/login", async (ctx, next) => {
+  const list = [{ id: 1 }, { id: 2 }]
+  const { name } = ctx.request.body;
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: {
+      name
+    },
+  };
+});
 
 module.exports = router
