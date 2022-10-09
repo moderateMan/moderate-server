@@ -23,7 +23,7 @@ const app = new Koa()
 // 解决跨域
 app.use(cors({
   origin: function (ctx) {
-     return 'https://zero2one.moderate.run/'; 
+     return 'https://moderate.run/'; 
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 5,
