@@ -33,7 +33,7 @@ jobs:
             - name: deploy # 部署
               run: |
                   ssh root@150.158.31.130 "
-                    cd /home/play/projects/moderate-server;
+                    cd /projects/moderate-server;
                     git checkout dev
                     git pull;
                     yarn;
