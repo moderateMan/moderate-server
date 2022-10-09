@@ -123,6 +123,7 @@ const toWatchFlies = async () => {
   watcher
     .on("add", async function (path) {
       toAdd(path);
+      console.log("File", path, "has been change");
     })
     .on("change", async function (path) {
       deleteDoc({ path });
