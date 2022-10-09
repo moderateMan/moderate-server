@@ -3,7 +3,7 @@ services:
   moderate-server:
     build: 
         context: .
-        dockerfile: Dockerfile
+        dockerfile: dockerfile
     image: moderate-server
     container_name: moderate-server
     volumes:
