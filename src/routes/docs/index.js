@@ -69,6 +69,7 @@ const parseDoc = async (path, id) => {
 };
 
 const toWatchFlies = async () => {
+  console.log("监听文件改动")
   const watcher = chokidar.watch(docsDir.path, {
     ignored: /[\/\\]\./,
     ignoreInitial: !isInitDoc,
@@ -137,10 +138,12 @@ const toWatchFlies = async () => {
 };
 
 if (isInitDoc) {
+  console.log("初始化")
   deleteAll("docs").then(() => {
     toWatchFlies();
   });
 } else {
+  console.log("非初始化")
   toWatchFlies();
 }
 
