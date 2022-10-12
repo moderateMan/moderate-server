@@ -113,11 +113,11 @@ const config = {
       },
       {
         name: "react-router",
-        url: "https://unpkg.com/react-router@6/umd/react-router.development.js",
+        url: "https://unpkg.com/react-router@6.4.2/dist/umd/react-router.production.min.js",
       },
       {
         name: "react-router-dom",
-        url: "https://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js",
+        url: "https://unpkg.com/react-router-dom@6.4.2/dist/umd/react-router-dom.production.min.js",
       },
       {
         name: "antd",

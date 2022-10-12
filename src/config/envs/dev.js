@@ -6,11 +6,11 @@
  module.exports = {
      // mongodb 连接配置
      mongodbConf: {
-         host: '49.233.107.254',
+         host: '150.158.31.130',
          port: '27017',
-         dbName: 'play',
-         user:"play",
-         password:"play"
+         dbName: 'demo',
+         user:"demo",
+         password:"demo"
      },
      // redis 连接配置
      redisConf: {
