@@ -7,10 +7,10 @@
      // mongodb 连接配置
      mongodbConf: {
          host: '150.158.31.130',
-         port: '27017',
-         dbName: 'demo',
-         user:"demo",
-         password:"demo"
+         port: '27016',
+         dbName: 'play',
+         user:"admin",
+         password:"123456"
      },
      // redis 连接配置
      redisConf: {

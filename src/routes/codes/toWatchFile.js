@@ -49,6 +49,8 @@ const toWatchFlies = async () => {
     ignoreInitial: !isInit,
   });
 
+  console.log("test")
+
   watcher
     .on("add", async function (path) {
       toAdd(path);
