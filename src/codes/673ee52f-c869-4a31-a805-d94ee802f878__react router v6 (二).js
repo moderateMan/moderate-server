@@ -5,7 +5,7 @@ const describe = {
   date: "2022/4/2",
   tags: "react"
 }
-  
+
 const getReactCode = () => {
   let a = `const {
     useRoutes,
@@ -101,33 +101,28 @@ const config = {
     js: [
       {
         name: "React",
-        url: "https://unpkg.com/browse/react@17.0.2/cjs/react.production.min.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js",
       },
       {
         name: "react-dom",
-        url: "https://unpkg.com/react-dom/umd/react-dom.development.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js",
       },
       {
         name: "history",
-        url: "https://unpkg.com/browse/react-dom@17.0.2/cjs/react-dom.production.min.js",
+        url: "https://unpkg.com/history@5/umd/history.development.js",
       },
       {
         name: "react-router",
-        url: "https://unpkg.com/react-router@6.4.2/dist/umd/react-router.production.min.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/react-router/6.0.1/react-router.production.min.js",
       },
       {
         name: "react-router-dom",
-        url: "https://unpkg.com/react-router-dom@6.4.2/dist/umd/react-router-dom.production.min.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/6.0.1/react-router-dom.production.min.js",
       },
       {
         name: "antd",
-        url: "https://unpkg.com/browse/antd@4.23.5/dist/antd.min.js",
+        url: "https://cdn.bootcdn.net/ajax/libs/antd/4.19.4/antd.js",
       },
-      {
-        name: "vue3",
-        url: "https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.js",
-      },
-     
     ],
   },
 };
