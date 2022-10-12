@@ -101,7 +101,7 @@ const config = {
     js: [
       {
         name: "React",
-        url: "https://unpkg.com/react/umd/react.development.js",
+        url: "https://unpkg.com/browse/react@17.0.2/cjs/react.production.min.js",
       },
       {
         name: "react-dom",
@@ -109,7 +109,7 @@ const config = {
       },
       {
         name: "history",
-        url: "https://unpkg.com/history@5/umd/history.development.js",
+        url: "https://unpkg.com/browse/react-dom@17.0.2/cjs/react-dom.production.min.js",
       },
       {
         name: "react-router",
