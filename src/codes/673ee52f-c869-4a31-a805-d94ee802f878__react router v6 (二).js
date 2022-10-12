@@ -109,7 +109,7 @@ const config = {
       },
       {
         name: "history",
-        url: "https://unpkg.com/history@5/umd/history.development.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/history/5.3.0/history.production.min.js",
       },
       {
         name: "react-router",
@@ -121,7 +121,7 @@ const config = {
       },
       {
         name: "antd",
-        url: "https://cdn.bootcdn.net/ajax/libs/antd/4.19.4/antd.js",
+        url: "https://cdnjs.cloudflare.com/ajax/libs/antd/4.23.5/antd.min.js",
       },
     ],
   },
