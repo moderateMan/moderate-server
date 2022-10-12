@@ -121,7 +121,7 @@ const config = {
       },
       {
         name: "antd",
-        url: "https://cdn.bootcdn.net/ajax/libs/antd/4.19.4/antd.js",
+        url: "https://unpkg.com/browse/antd@4.23.5/dist/antd.min.js",
       },
       {
         name: "vue3",
