@@ -16,6 +16,7 @@ const users = require('./routes/users')
 const docs = require('./routes/docs')
 const codes = require('./routes/codes')
 const cli = require('./routes/cli')
+const backend = require('./routes/backend')
 
 
 const app = new Koa()
@@ -88,6 +89,8 @@ app.use(users.routes(), users.allowedMethods())
 app.use(docs.routes(), docs.allowedMethods())
 app.use(codes.routes(), codes.allowedMethods())
 app.use(cli.routes(), cli.allowedMethods())
+app.use(backend.routes(), backend.allowedMethods())
+
 
 // error-handling
 app.on('error', (err, ctx) => {
