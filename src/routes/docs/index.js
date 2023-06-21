@@ -12,7 +12,7 @@ const {
   deleteAll,
   getAll,
   findDoc,
-  
+  getAllRemote
 } = require("../../db/docs");
 const {} = require("../../db/atlas");
 const { docsDir } = require("../../config/index");
@@ -178,6 +178,19 @@ router.post("/atlas", async (ctx, next) => {
 });
 router.post("/getAll", async (ctx, next) => {
   var list = await getAll(ctx.request.body);
+  var docSize = await getCount();
+  ctx.response.body = {
+    status: 1,
+    code: "200",
+    data: { list:list.map((item)=>{
+      const {path,_id,__v,...rest} = item._doc;
+      return rest
+    }), docSize },
+  };
+});
+
+router.post("/getAllRemote", async (ctx, next) => {
+  var list = await getAllRemote(ctx.request.body);
   var docSize = await getCount();
   ctx.response.body = {
     status: 1,

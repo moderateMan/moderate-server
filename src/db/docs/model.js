@@ -8,7 +8,8 @@ const uSchema = new mongoose.Schema({
   cover:String,
   date:String,
   tags:Object,
-  author:Object
+  author:Object,
+  url:String
 })
  
 exports.Doc = mongoose.model('docs',uSchema)

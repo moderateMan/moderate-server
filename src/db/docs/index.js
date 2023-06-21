@@ -10,7 +10,7 @@ const { v4: uuidv4 } = require("uuid");
  * @param next
  * @returns {Promise<void>}
  */
-exports.queryDoc = async(ctx,next)=>{
+exports.queryDoc = async (ctx, next) => {
   // TODO 解析入参
   // ctx.request.body
 
@@ -21,7 +21,7 @@ exports.queryDoc = async(ctx,next)=>{
     queryStr
   } = ctx.request.body // 解析 json 格式
 
-  Doc.find({title:{$regex:queryStr}}).skip(pageIndex-1*pageSize).limit(pageSize).sort({date:1})
+  Doc.find({ title: { $regex: queryStr } }).skip(pageIndex - 1 * pageSize).limit(pageSize).sort({ date: 1 })
 
   ctx.response.body = {
     status: 1, code: "200", data: mdStr,
@@ -49,7 +49,7 @@ exports.GetDoc = async (ctx, next) => {
 };
 
 exports.findDoc = async (data) => {
-    return await Doc.findOne(data);
+  return await Doc.findOne(data);
 };
 
 exports.deleteDoc = async (data) => {
@@ -62,25 +62,36 @@ exports.addDoc = async (data) => {
 
 
 exports.deleteAll = async (collectioName) => {
-    if(conn.collections[collectioName]){
-        return await conn.collections[collectioName].deleteMany()
-    }else{
-        return Promise.resolve()
-    }
+  if (conn.collections[collectioName]) {
+    return await conn.collections[collectioName].deleteMany()
+  } else {
+    return Promise.resolve()
+  }
 };
 
-exports.getCount = async() =>{
+exports.getCount = async () => {
   return await Doc.count();
 }
 
 exports.getAll = async (data) => {
   const {
-    pageSize=100,
-    pageIndex=1,
-    queryStr=""
+    pageSize = 100,
+    pageIndex = 1,
+    queryStr = ""
   } = data// 解析 json 格式
-  // return await Doc.find(data).sort({date:1});
-  return await Doc.find({title:{$regex:queryStr}}).skip((pageIndex-1)*pageSize).limit(pageSize).sort({date:-1})
+  return await Doc.find({ title: { $regex: queryStr } }).skip((pageIndex - 1) * pageSize).limit(pageSize).sort({ date: -1 })
+};
+
+exports.getAllRemote = async (data) => {
+  const {
+    pageSize = 100,
+    pageIndex = 1,
+    queryStr = ""
+  } = data// 解析 json 格式
+  let response = await Doc.find({ title: { $regex: queryStr } }).skip((pageIndex - 1) * pageSize).limit(pageSize).sort({ date: -1 })
+  return response.filter((item) => {
+    return item.url
+  })
 };
 
 exports.SaveDoc = async (ctx, next) => {
@@ -123,6 +134,6 @@ exports.DeleteDoc = async (ctx, next) => {
 };
 
 
-exports.addNode = async() =>{
-    return await Doc.count();
- }
+exports.addNode = async () => {
+  return await Doc.count();
+}
